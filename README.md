@@ -24,7 +24,6 @@ services:
       - "8080:80"
     volumes:
       - ./data/web/:c:/inetpub/wwwroot/:rw
-      - ./data/software/:c:/software/:rw
     environment:
       - ACCEPT_EULA=Y
       - DB_CONNECTION_STRING=Server=sql;Database=DotNetNuke;User Id=sa;Password=Password123;
