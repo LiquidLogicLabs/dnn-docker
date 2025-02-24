@@ -1,0 +1,24 @@
+services:
+  web:
+    image: liquidlogiclabs/dnn-docker:9.13.7
+    container_name: dnn
+    ports:
+      - "8080:80"
+      
+    volumes:
+      - ./data/web/:c:/inetpub/wwwroot/:rw
+      - ./data/software/:c:/software/:rw
+    environment:
+      - ACCEPT_EULA=Y
+      - DB_CONNECTION_STRING=Server=sql;Database=DotNetNuke;User Id=sa;Password=Password123;
+      - DNN_VERSION=9.13.7
+      - DEBUG=true
+  
+  sql:
+    image: liquidlogiclabs/mssql-server-windows:2019-express
+    container_name: sql
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123
